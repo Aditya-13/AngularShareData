@@ -1,0 +1,9 @@
+<h1 class="text-center py-4 text-3xl font-bold">AMAZON PRODUCTS</h1>
+<div class="flex flex-wrap">
+    <div *ngFor="let prod of product ; index as i" class="p-10 text-center">
+        <img class="w-60 rounded-lg h-48" src={{prod.images[0]}}>
+        <h1 class="text-2xl w-40 mx-auto font-bold pt-4">{{prod.title}}</h1>
+        <h1 class="text-2xl py-2 font-bold">{{prod.price}}</h1>
+        <button class="border px-4 py-2 rounded-full border-black"(click)="sendData(prod)">Buy Now</button>
+    </div>
+</div>
