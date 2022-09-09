@@ -8,6 +8,9 @@ import { TransferService } from '../../transfer.service'
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  isApiCall : boolean = true
+  details : boolean = false
+  employees : object = {}
   product: any
   
   constructor(
@@ -21,13 +24,21 @@ export class ProductsComponent implements OnInit {
 
   loadData(){
     this.data.getProductsData().subscribe(prod => {
+      this.isApiCall = false
       this.product = prod["products"]
     })
   }
   
   sendData(prod : object){
-    this.data.setProductsData(prod)
-    this.router.navigate(['/product'])
+    this.details = true;
+    this.employees = prod
+    console.log(prod)
+    // this.router.navigate(['/product-details'])
+    // this.data.setProductsData(prod)
+  }
+
+  returnToHome(){
+    this.details = false;
   }
 
 }

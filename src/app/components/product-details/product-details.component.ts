@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TransferService } from '../../transfer.service'
 
@@ -8,6 +8,8 @@ import { TransferService } from '../../transfer.service'
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+
+  @Input() employees : any
   product : any
   constructor(
     private data : TransferService,
@@ -15,14 +17,15 @@ export class ProductDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProductDetails()
+    console.log(this.employees)
+    // this.getProductDetails()
   }
   
-  getProductDetails(){
-      this.data.sharedData$.subscribe(prod => {
-        prod ? this.product = prod : this.router.navigate(['/'])
-      })
-      console.log(this.product)
-  }
+  // getProductDetails(){
+  //     this.data.sharedData$.subscribe(prod => {
+  //       prod ? this.product = prod : this.router.navigate(['/'])
+  //     })
+  //     console.log(this.product)
+  // }
 
 }
